@@ -1,0 +1,100 @@
+\documentclass[utf8]{article}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{hyperref}
+
+\geometry{margin=0.75in}
+\title{Multi-Screen Weather App}
+\author{Weather Application}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section*{App Screenshots}
+
+\subsection*{Screen 1: Landing Page}
+Main entry point for weather search.
+\begin{center}
+    \includegraphics[width=0.4\textwidth]{landing_page.png}
+\end{center}
+
+\vspace{0.5cm}
+
+\subsection*{Screen 2: Search Location}
+User enters city name to fetch weather.
+\begin{center}
+    \includegraphics[width=0.4\textwidth]{search_location.png}
+\end{center}
+
+\vspace{0.5cm}
+
+\subsection*{Screen 3: Weather Details}
+Comprehensive weather information display.
+\begin{center}
+    \includegraphics[width=0.4\textwidth]{paris.png}
+\end{center}
+
+\vspace{0.5cm}
+
+\subsection*{Screen 4: Save Favorites}
+Add weather location to favorites.
+\begin{center}
+    \includegraphics[width=0.4\textwidth]{favorites.png}
+\end{center}
+
+\vspace{0.5cm}
+
+\subsection*{Screen 5: Favorites List}
+View and manage saved locations.
+\begin{center}
+    \includegraphics[width=0.4\textwidth]{view_favorites.png}
+\end{center}
+
+\newpage
+
+\section*{Architecture Overview}
+
+\textbf{Three-Screen Design:}
+\begin{itemize}
+    \item \textbf{Search Screen (MainActivity)}: Input city names, fetch weather asynchronously
+    \item \textbf{Details Screen (DetailsActivity)}: Display temperature, condition, humidity, save favorites
+    \item \textbf{Favorites Screen (FavoritesActivity)}: Manage saved locations with delete functionality
+\end{itemize}
+
+\section*{Technical Stack}
+
+\begin{itemize}
+    \item \textbf{Language}: Kotlin
+    \item \textbf{Async}: Coroutines with lifecycleScope
+    \item \textbf{Networking}: Retrofit + Gson
+    \item \textbf{APIs}: Open-Meteo Geocoding \& Weather Forecast
+    \item \textbf{Storage}: SharedPreferences for favorites
+    \item \textbf{UI}: ConstraintLayout, Material Design Cards
+\end{itemize}
+
+\section*{Key Features}
+
+\begin{itemize}
+    \item Explicit Intents for navigation between activities
+    \item Asynchronous API calls with error handling
+    \item Loading indicators during network requests
+    \item Snackbar notifications for errors
+    \item Responsive UI with proper spacing
+    \item Delete functionality for favorite cities
+    \item Weather code to emoji mapping
+\end{itemize}
+
+\section*{Data Flow}
+
+\textbf{Search:} User input $\rightarrow$ Geocoding API $\rightarrow$ Weather API $\rightarrow$ Details Screen
+
+\textbf{Favorites:} Add $\rightarrow$ SharedPreferences $\rightarrow$ Delete removes from storage
+
+\section*{Dependencies}
+
+Retrofit 2.9.0, Gson, Coroutines 1.7.3, Lifecycle Runtime 2.6.2, RecyclerView 1.4.0, Material Design 1.13.0
+
+\end{document}
+
